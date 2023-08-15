@@ -21,6 +21,7 @@ import {
 } from './styles'
 import { convertTimeStringToMinutes } from '@/utils/converte-time-string-to-minutes'
 import { api } from '@/lib/axios'
+import { useRouter } from 'next/router'
 
 const timeIntervalsFormSchema = z.object({
   intervals: z
@@ -86,6 +87,7 @@ export default function TimeIntervals() {
     },
   })
 
+  const router = useRouter()
   const weekDays = getWeekDays()
 
   const { fields } = useFieldArray({
@@ -96,9 +98,9 @@ export default function TimeIntervals() {
   const intervals = watch('intervals')
 
   async function handleSetTimeIntervals(data: TimeIntervalsFormOutput) {
-    const result = await api.post('/users/time-intervals', data)
+    await api.post('/users/time-intervals', data)
 
-    console.log(result)
+    await router.push('/register/update-profile')
   }
 
   return (

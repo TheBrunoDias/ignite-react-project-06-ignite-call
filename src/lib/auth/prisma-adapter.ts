@@ -1,11 +1,15 @@
+import {
+  GetServerSidePropsContext,
+  NextApiRequest,
+  NextApiResponse,
+} from 'next'
 import { Adapter } from 'next-auth/adapters'
+import { destroyCookie, parseCookies } from 'nookies'
 import { prisma } from '../prisma'
-import { NextApiRequest, NextApiResponse } from 'next'
-import { parseCookies, destroyCookie } from 'nookies'
 
 export function PrismaAdapter(
-  req: NextApiRequest,
-  res: NextApiResponse,
+  req: NextApiRequest | GetServerSidePropsContext['req'],
+  res: NextApiResponse | GetServerSidePropsContext['res'],
 ): Adapter {
   return {
     async createUser(user) {
