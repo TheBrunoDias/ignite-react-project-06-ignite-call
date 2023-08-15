@@ -8,6 +8,7 @@ import { z } from 'zod'
 import { Container, Form, FormError, Header } from './styles'
 import { api } from '@/lib/axios'
 import { AxiosError } from 'axios'
+import { NextSeo } from 'next-seo'
 
 const registerFormSchema = z.object({
   username: z
@@ -60,6 +61,7 @@ export default function Register() {
 
   return (
     <>
+      <NextSeo title="Crie uma Conta | Ignite Call" />
       <Container>
         <Header>
           <Heading as="strong">Bem-vindo ao Ignite Call!</Heading>

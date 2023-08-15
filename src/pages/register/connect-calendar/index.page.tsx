@@ -4,6 +4,7 @@ import { Container, Header } from '../styles'
 import { AuthError, ConnectBox, ConnectItem } from './styles'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 
 export default function ConnectCalendar() {
   const session = useSession()
@@ -22,6 +23,8 @@ export default function ConnectCalendar() {
 
   return (
     <>
+      <NextSeo title="Conectar ao Calendário | Ignite Call" noindex />
+
       <Container>
         <Header>
           <Heading as="strong">Conecte sua agenda!</Heading>
